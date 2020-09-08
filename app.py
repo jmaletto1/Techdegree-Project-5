@@ -52,10 +52,12 @@ def create():
     return render_template('new.html', form=form)
 
 
-@app.route('/entries/<id>')
+@app.route('/entries/<int:id>')
 def show(id):
     """Shows each Journal entry according to it's ID, which is then displayed via detail.html"""
     view = models.Journal.select().where(models.Journal.j_id == id)
+    if view.count() == 0:
+        abort(404)
     return render_template('detail.html', view=view)
 
 
@@ -64,9 +66,16 @@ def update():
     pass
 
 
-@app.route('/entries/<id>/delete')
-def delete():
-    pass
+@app.route('/entries/<int:id>/delete', methods=('GET', 'POST'))
+def delete(id):
+    """Deletes the relevant journal entry, according to it's ID."""
+    try:
+        x = models.Journal.delete().where(models.Journal.j_id == id).execute()
+        flash("Entry Deleted!")
+        return redirect(url_for('index'))
+        flash("Entry Deleted!")
+    except models.DoesNotExist:
+        return redirect(url_for('index'))
 
 
 if __name__ == '__main__':

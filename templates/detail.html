@@ -15,18 +15,18 @@
             <div class="container">
                 <div class="site-header">
                     <a class="logo" href="index.html"><i class="material-icons">library_books</i></a>
-                    <a class="button icon-right" href="new.html"><span>New Entry</span> <i class="material-icons">add</i></a>
+                    <a class="button icon-right" href="{{ url_for('create') }}"><span>New Entry</span> <i class="material-icons">add</i></a>
                 </div>
             </div>
         </header>
         <section>
             <div class="container">
-				{% block content %}
-				{% for x in view %}
+                {% block content %}
+                {% for x in view %}
                 <div class="entry-list single">
                     <article>
                         <h1>{{ x.title }}</h1>
-						<time datetime="{{ x.date.strftime('%d %M %Y') }}">Date Created: {{ x.date.strftime('%d %M %Y') }}</time>
+                        <time datetime="{{ x.date.strftime('%d %M %Y') }}">Date Created: {{ x.date.strftime('%d %M %Y') }}</time>
                         <div class="entry">
                             <h3>Time Spent: </h3>
                             <p>{{ x.time_spent }} Hours</p>
@@ -37,7 +37,7 @@
                         </div>
                         <div class="entry">
                             <h3>Resources to Remember:</h3>
-							<p>{{ x.resources }}</p>
+                            <p>{{ x.resources }}</p>
 <!--
                             <ul>
                                 <li><a href="">Lorem ipsum dolor sit amet</a></li>
@@ -48,12 +48,14 @@
 -->
                         </div>
                     </article>
-					{% endfor %}
-					{% endblock %}
+                    
                 </div>
             </div>
             <div class="edit">
                 <p><a href="edit.html">Edit Entry</a></p>
+                <p><a href="{{ url_for('delete', id=x.j_id) }}">Delete Entry</a></p>
+                {% endfor %}
+                {% endblock %}
             </div>
         </section>
         <footer>

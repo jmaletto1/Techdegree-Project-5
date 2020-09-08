@@ -1,0 +1,11 @@
+click==7.1.2
+dnspython==2.0.0
+Flask==1.1.2
+is-disposable-email==1.0.0
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+peewee==3.13.3
+Werkzeug==1.0.1
+WTForms==2.3.3
+wtforms-validators==1.0.0

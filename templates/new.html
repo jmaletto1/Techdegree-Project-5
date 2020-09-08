@@ -22,26 +22,26 @@
         </header>
         <section>
             <div class="container">
-				{% block content %}
+                {% block content %}
                 <div class="new-entry">
                     <h2>New Entry</h2>
-						<form method="POST" action="" class="form">
-						{{ form.hidden_tag() }}
-						{% for field in form %}	
-							<div class="field">
-								{% if field.errors %}
-									{% for error in field.errors %}
-										<div class="notification error">{{ error }}</div>
-									{% endfor %}
-								{% endif %}
-								{{ field(placeholder=field.label.text) }}
-							</div>
-						{% endfor %}
-						<input type="submit" value="Publish Entry" class="button">
-						<a href="{{ url_for('index') }}" class="button icon-left">Cancel</a>	
+                        <form method="POST" action="" class="form">
+                        {{ form.hidden_tag() }}
+                        {% for field in form %} 
+                            <div class="field">
+                                {% if field.errors %}
+                                    {% for error in field.errors %}
+                                        <div class="notification error">{{ error }}</div>
+                                    {% endfor %}
+                                {% endif %}
+                                {{ field(placeholder=field.label.text) }}
+                            </div>
+                        {% endfor %}
+                        <input type="submit" value="Publish Entry" class="button">
+                        <a href="{{ url_for('index') }}" class="button icon-left">Cancel</a>    
                     </form>
                 </div>
-				{% endblock %}
+                {% endblock %}
             </div>
         </section>
         <footer>
@@ -51,17 +51,3 @@
         </footer>
     </body>
 </html>
-<!--
-                        <label for="title">Title of your Journal</label>
-                        <input id="title" type="text" name="title"><br>
-                        <label for="date">Date</label>
-                        <input id="date" type="date" name="date"><br>
-                        <label for="time_spent"> Time Spent</label>
-                        <input id="time_spent" type="text" name="timeSpent"><br>
-                        <label for="learnt">What I Learned</label>
-                        <textarea id="learnt" rows="5" name="whatILearned"></textarea>
-                        <label for="resources">Resources to Remember</label>
-                        <textarea id="resources" rows="5" name="ResourcesToRemember"></textarea>
-                        <input type="submit" value="Publish Entry" class="button">
-                        <a href="#" class="button button-secondary">Cancel</a>
--->
