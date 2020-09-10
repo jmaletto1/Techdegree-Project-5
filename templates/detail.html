@@ -14,7 +14,7 @@
         <header>
             <div class="container">
                 <div class="site-header">
-                    <a class="logo" href="index.html"><i class="material-icons">library_books</i></a>
+                    <a class="logo" href="{{ url_for('index') }}"><i class="material-icons">library_books</i></a>
                     <a class="button icon-right" href="{{ url_for('create') }}"><span>New Entry</span> <i class="material-icons">add</i></a>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                 <div class="entry-list single">
                     <article>
                         <h1>{{ x.title }}</h1>
-                        <time datetime="{{ x.date.strftime('%d %M %Y') }}">Date Created: {{ x.date.strftime('%d %M %Y') }}</time>
+                        <time datetime="{{ x.date.strftime('%d %m %Y') }}">Date Created: {{ x.date.strftime('%d %m %Y') }}</time>
                         <div class="entry">
                             <h3>Time Spent: </h3>
                             <p>{{ x.time_spent }} Hours</p>
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="edit">
-                <p><a href="edit.html">Edit Entry</a></p>
+                <p><a href="{{ url_for('edit', id=x.j_id) }}">Edit Entry</a></p>
                 <p><a href="{{ url_for('delete', id=x.j_id) }}">Delete Entry</a></p>
                 {% endfor %}
                 {% endblock %}

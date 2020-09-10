@@ -8,9 +8,9 @@ class Journal(Model):
     j_id = IntegerField(primary_key=True)
     title = TextField(unique=True)
     date = DateTimeField(default=datetime.datetime.now)
-    time_spent = IntegerField
-    learnt = TextField
-    resources = TextField
+    time_spent = IntegerField(null=False)
+    learnt = TextField(null=False)
+    resources = TextField(null=False)
 
     class Meta:
         database = DATABASE

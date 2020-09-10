@@ -22,14 +22,14 @@
         <section>
             <div class="container">
                 <div class="entry-list">
-					{% block content %}
-					{% for i in stream %}
-						<article>
-							<h2><a href="/entries/{{i.j_id}}">{{ i.title }}</a></h2>
-							<time datetime="{{ i.date.strftime('%d %M %Y') }}">{{ i.date.strftime('%d %M %Y') }}</time>
-						</article>
-					{% endfor %}
-					{% endblock %}
+                    {% block content %}
+                    {% for i in stream %}
+                        <article>
+                            <h2><a href="/entries/{{i.j_id}}">{{ i.title }}</a></h2>
+                            <time datetime="{{ i.date.strftime('%d %m %Y') }}">{{ i.date.strftime('%d %m %Y') }}</time>
+                        </article>
+                    {% endfor %}
+                    {% endblock %}
                 </div>
             </div>
         </section>

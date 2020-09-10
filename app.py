@@ -61,9 +61,22 @@ def show(id):
     return render_template('detail.html', view=view)
 
 
-@app.route('/entries/<id>/edit')
-def update():
-    pass
+@app.route('/entries/<int:id>/edit', methods=('GET', 'POST'))
+def edit(id):
+    """Updates the relevant Journal Entry."""
+    form = forms.NewEntry()
+    selection = models.Journal.select().where(models.Journal.j_id == id)
+    if form.validate_on_submit():
+        flash("Entry successfully updated!")
+        models.Journal.update(
+            title=form.title.data.strip(),
+            date=form.date.data,
+            time_spent=form.time_spent.data,
+            learnt=form.learnt.data,
+            resources=form.resources.data
+        ).where(models.Journal.j_id == id).execute()
+        return redirect(url_for('index'))
+    return render_template('edit.html', selection=selection, form=form)
 
 
 @app.route('/entries/<int:id>/delete', methods=('GET', 'POST'))
@@ -90,4 +103,4 @@ if __name__ == '__main__':
         )
     except ValueError:
         print("Oh nooz!")
-        app.run(debug=DEBUG, host=HOST, port=PORT)
+    app.run(debug=DEBUG, host=HOST, port=PORT)
