@@ -14,7 +14,7 @@
         <header>
             <div class="container">
                 <div class="site-header">
-					<a class="logo" href="{{ url_for('index') }}"><i class="material-icons">library_books</i></a>
+                    <a class="logo" href="{{ url_for('index') }}"><i class="material-icons">library_books</i></a>
                     <a class="button icon-right" href="{{ url_for('create') }}"><span>New Entry</span> <i class="material-icons">add</i></a>
                 </div>
             </div>
@@ -22,12 +22,12 @@
         <section>
             <div class="container">
                 <div class="edit-entry">
-					{% block content %}
-					{% for y in selection %}
+                    {% block content %}
+                    {% for y in selection %}
                     <h2>Edit Entry</h2>
                     <form method="POST" action="" class="form">
-						{{ form.hidden_tag() }}
-						<label for="title">Title</label>
+                        {{ form.hidden_tag() }}
+                        <label for="title">Title</label>
                         <input id="title" type="text" name="title" value="{{ y.title }}"><br>
                         <label for="date">Date</label>
                         <input id="date" type="date" name="date" value="{{ y.date }}"><br>
@@ -40,8 +40,8 @@
                         <input type="submit" value="Update Entry" class="button">
                         <a href="{{ url_for('index') }}" class="button button-secondary">Cancel</a>
                     </form>
-					{% endfor %}
-					{% endblock %}	
+                    {% endfor %}
+                    {% endblock %}  
                 </div>
             </div>
         </section>
